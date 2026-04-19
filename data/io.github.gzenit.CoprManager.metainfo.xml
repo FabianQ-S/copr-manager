@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.gzenit.CoprManager</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <name>COPR Manager</name>
+  <summary>Visualiza tus repos COPR instalados en tarjetas</summary>
+  <description>
+    <p>
+      COPR Manager es una app visual construida con GTK 4 y Libadwaita para listar
+      repositorios COPR del sistema con una interfaz basada en tarjetas.
+    </p>
+    <p>
+      Esta version alpha muestra los repos detectados y deja visibles los botones
+      de activar, desactivar y eliminar como funciones no disponibles por ahora.
+    </p>
+  </description>
+  <launchable type="desktop-id">io.github.gzenit.CoprManager.desktop</launchable>
+  <releases>
+    <release version="1.0.0-alpha" date="2026-04-19"/>
+  </releases>
+  <content_rating type="oars-1.1"/>
+</component>
