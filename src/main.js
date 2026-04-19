@@ -10,6 +10,7 @@ import { CoprManagerWindow } from './window.js';
 
 const APP_ID = 'io.github.gzenit.CoprManager';
 const APP_VERSION = 'Alpha 1.0.0';
+const APP_GITHUB = 'https://github.com/FabianQ-S/copr-manager';
 
 const CoprManagerApplication = GObject.registerClass(
 class CoprManagerApplication extends Adw.Application {
@@ -41,9 +42,14 @@ class CoprManagerApplication extends Adw.Application {
       version: APP_VERSION,
       comments: 'Gestion visual de repos COPR con GTK 4 y Libadwaita.',
       license_type: Gtk.License.GPL_3_0,
-      website: 'https://copr.fedorainfracloud.org/',
-      issue_url: 'https://copr.fedorainfracloud.org/',
+      website: APP_GITHUB,
+      issue_url: `${APP_GITHUB}/issues`,
+      support_url: APP_GITHUB,
+      copyright: '2026 gzenit',
     });
+
+    dialog.add_link('Repositorio en GitHub', APP_GITHUB);
+    dialog.add_link('COPR Oficial', 'https://copr.fedorainfracloud.org/');
 
     dialog.present(this.active_window);
   }
@@ -74,8 +80,19 @@ function loadCss() {
   );
 }
 
+function loadDevIconSearchPath() {
+  const file = Gio.File.new_for_uri(import.meta.url);
+  const srcDir = file.get_parent().get_path();
+  const projectDir = Gio.File.new_for_path(srcDir).get_parent().get_path();
+  const iconDir = `${projectDir}/data/icons/hicolor/512x512/apps`;
+
+  const iconTheme = Gtk.IconTheme.get_for_display(Gdk.Display.get_default());
+  iconTheme.add_search_path(iconDir);
+}
+
 Adw.init();
 loadCss();
+loadDevIconSearchPath();
 
 const app = new CoprManagerApplication();
 app.run([]);

@@ -1,4 +1,5 @@
 import Adw from 'gi://Adw';
+import Gio from 'gi://Gio';
 import GLib from 'gi://GLib';
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk?version=4.0';
@@ -46,6 +47,19 @@ class CoprManagerWindow extends Adw.ApplicationWindow {
 
     this.refreshButton.connect('clicked', () => this.reloadCoprs());
     headerBar.pack_end(this.refreshButton);
+
+    const appMenu = new Gio.Menu();
+    appMenu.append('Acerca de COPR Manager', 'app.about');
+    appMenu.append('Salir', 'app.quit');
+
+    const menuButton = new Gtk.MenuButton({
+      icon_name: 'open-menu-symbolic',
+      menu_model: appMenu,
+      tooltip_text: 'Menu de aplicacion',
+      css_classes: ['flat'],
+    });
+
+    headerBar.pack_end(menuButton);
 
     toolbarView.add_top_bar(headerBar);
 

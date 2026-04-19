@@ -15,3 +15,14 @@ install_data(
   'io.github.gzenit.CoprManager.metainfo.xml',
   install_dir: join_paths(get_option('datadir'), 'metainfo')
 )
+
+install_data(
+  'icons/hicolor/512x512/apps/io.github.gzenit.CoprManager.png',
+  install_dir: join_paths(
+    get_option('datadir'),
+    'icons',
+    'hicolor',
+    '512x512',
+    'apps'
+  )
+)
